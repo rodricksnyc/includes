@@ -3,10 +3,16 @@
 
   //hover for dropdown items in main navbar
 
+  $('.dropdown > a').click(function(){
+        location.href = this.href;
+    });
+
   var $dropdown = $(".navbar .nav-item");
   var $dropdownToggle = $(".dropdown-toggle");
   var $dropdownMenu = $(".dropdown-menu");
   var showClass = "show";
+  // var last = $('#drop3')
+  var lastD = $('#drop3').closest('.dropdown').find('.dropdown-menu').addClass('last')
 
   $(window).on("load resize", function() {
     if (this.matchMedia("(min-width: 992px)").matches) {
@@ -20,6 +26,16 @@
           $('.nav-link.dropdown-toggle').not('.active').closest('.nav-item').find('.dropdown-menu').addClass('lightGold')
           $('.nav-link.dropdown-toggle.active').closest('.nav-item').find('.dropdown-menu').addClass('goldBackground')
 
+
+
+
+          // var width1 = $(this).find('.nav-link').width()
+          //
+          // var width2 = $(this).find('.dropdown-menu').width()
+          //
+          // $(last).css('width', lastD)
+
+
         },
         function() {
           var $this = $(this);
@@ -32,6 +48,15 @@
       $dropdown.off("mouseenter mouseleave");
     }
   });
+
+
+// $('.navbar-nav .dropdown-menu:nth-child(3)').mouseenter(() => {
+
+// })
+
+
+
+
 
 
 $('.openTab2').click(function(e){
@@ -58,6 +83,61 @@ $('.openTab4').click(function(e){
 
 })
 
+
+$('.openTab5').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="vision"]').tab('show')
+
+})
+
+$('.openTab6').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="network"]').tab('show')
+
+})
+
+$('.openTab7').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="goals"]').tab('show')
+
+})
+
+$('.openTab8').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="leadership"]').tab('show')
+
+})
+
+$('.openTab9').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="expansion"]').tab('show')
+
+})
+
+
+$('.openTab10').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="prep"]').tab('show')
+
+})
+
+$('.openTab11').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="siic"]').tab('show')
+
+})
+
+$('.openTab12').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="academic"]').tab('show')
+
+})
+
+$('.openTab13').click(function(e){
+  e.preventDefault()
+ $('#nav [data-type="workforce"]').tab('show')
+
+})
 
 
 
@@ -119,8 +199,6 @@ counters.forEach(counter => {
 
 $(window).on('load', function() {
 
-
-
 	if ($('.block15, .block20').hasClass('active')) {
 
 
@@ -160,7 +238,8 @@ counters.forEach(counter => {
 
 
 
-$('.back-to-top').on('click', function() {
+
+$('.back-to-top').click(() => {
   scrollfn("#overview");
 })
 
@@ -211,14 +290,14 @@ $('.navbar-nav li .nav-link').each(function() {
 });
 
 
-
+//contact form
 
 $('#slideOut2 .modal-header a').attr('tabindex', '-1')
 
 var open = function() {
 
 
-  $('.changeTitle').html('Rate your Experience')
+  $('.changeTitle').html('We’d like to hear your feedback!')
   $('.contactUsOverlay').show();
 
   $('#theform input').each(function () {
@@ -486,6 +565,20 @@ if ($(document).innerWidth() <= 767) {
 
 
 
+	var hash = 1;
+
+	$(".ques").each(function(i){
+		var count = "ques" + (++hash)
+
+		$(this).attr("href",  "#" + count);
+
+
+		$(this).closest('.card').find('.collapse').attr("id", count);
+	});
+
+
+
+
 //validate and send message on contact form and toast message
 
 
@@ -580,13 +673,13 @@ $("#theform").validate(
 
 
   if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon').replaceWith('<i class="far fa-compress-arrows-alt darkBlue changeIcon"></i>')
+    $('.changeIcon').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon"></i>')
 
 
   }
 
   if ( $(this).html() == 'Expand All') {
-    $('.changeIcon').replaceWith('<i class="fal fa-expand-alt darkBlue changeIcon"></i>')
+    $('.changeIcon').replaceWith('<i class="fal fa-expand-alt blue changeIcon"></i>')
   }
 
 }
@@ -606,13 +699,13 @@ var expand2 = function() {
 
 
   if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon2').replaceWith('<i class="far fa-compress-arrows-alt darkBlue changeIcon2"></i>')
+    $('.changeIcon2').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon2"></i>')
 
 
   }
 
   if ( $(this).html() == 'Expand All') {
-    $('.changeIcon2').replaceWith('<i class="fal fa-expand-alt darkBlue changeIcon2"></i>')
+    $('.changeIcon2').replaceWith('<i class="fal fa-expand-alt blue changeIcon2"></i>')
   }
 
 }
@@ -633,13 +726,13 @@ var expand3 = function() {
 
 
   if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon3').replaceWith('<i class="far fa-compress-arrows-alt darkBlue changeIcon3"></i>')
+    $('.changeIcon3').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon3"></i>')
 
 
   }
 
   if ( $(this).html() == 'Expand All') {
-    $('.changeIcon3').replaceWith('<i class="fal fa-expand-alt darkBlue changeIcon3"></i>')
+    $('.changeIcon3').replaceWith('<i class="fal fa-expand-alt blue changeIcon3"></i>')
   }
 
 }
@@ -659,13 +752,13 @@ var expand4 = function() {
 
 
   if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon4').replaceWith('<i class="far fa-compress-arrows-alt darkBlue changeIcon4"></i>')
+    $('.changeIcon4').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon4"></i>')
 
 
   }
 
   if ( $(this).html() == 'Expand All') {
-    $('.changeIcon3').replaceWith('<i class="fal fa-expand-alt darkBlue changeIcon4"></i>')
+    $('.changeIcon4').replaceWith('<i class="fal fa-expand-alt blue changeIcon4"></i>')
   }
 
 }
@@ -675,4 +768,56 @@ $('#toggleAccordion4').keypress(
 
 ).click(
   expand4
+);
+
+var expand5 = function() {
+
+  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+  $('.expandAll5 .collapse').collapse('toggle');
+
+
+  if ( $(this).html() == 'Collapse All') {
+    $('.changeIcon5').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon5"></i>')
+
+
+  }
+
+  if ( $(this).html() == 'Expand All') {
+    $('.changeIcon5').replaceWith('<i class="fal fa-expand-alt blue changeIcon5"></i>')
+  }
+
+}
+
+$('#toggleAccordion5').keypress(
+  expand5
+
+).click(
+  expand5
+);
+
+
+
+var expand6 = function() {
+
+  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+  $('.expandAll6 .collapse').collapse('toggle');
+
+
+  if ( $(this).html() == 'Collapse All') {
+    $('.changeIcon6').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon6"></i>')
+
+
+  }
+
+  if ( $(this).html() == 'Expand All') {
+    $('.changeIcon6').replaceWith('<i class="fal fa-expand-alt blue changeIcon6"></i>')
+  }
+
+}
+
+$('#toggleAccordion6').keypress(
+  expand6
+
+).click(
+  expand6
 );

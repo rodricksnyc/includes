@@ -16,18 +16,16 @@ h3{
 
 }
 
-
 .blue{
   color:#08609E
 }
-
 
 .container-fluid{
   padding-left:0px;
   padding-right:0px
 }
 
-p {
+p, li {
   font-family: 'Red Hat Text', sans-serif;
   font-size:18px;
 }
@@ -65,6 +63,17 @@ p {
 
 header .logo{
   max-width: 21em;
+}
+
+.search{
+  font-size:1.2em;
+  margin-left:10%
+}
+
+.absoRight{
+  top:25px;
+  right:15px;
+  position: absolute;
 }
 
 .imgLC{
@@ -108,8 +117,6 @@ header .logo{
   width: 25%;
 
 }
-
-
 
 .block0 #nav5 .nav-tabs .nav-item {
   position: relative;
@@ -171,7 +178,7 @@ header .logo{
   border-radius: 40px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  border: 5px solid transparent;
+  border: 5px solid white;
 }
 
 a:hover .whiteBubble{
@@ -442,7 +449,7 @@ hr.gray{
 }
 
 .codes.three li:nth-child(1) span {
-background: #C0561B;
+  background: #C0561B;
 }
 
 .codes.one li:nth-child(2) span {
@@ -564,6 +571,10 @@ background: #C0561B;
   font-weight: 500
 }
 
+.table{
+  display: none
+}
+
 
 .card{
   margin-bottom: 1em;
@@ -607,9 +618,12 @@ background: #C0561B;
   transition: transform 0.3s;
   font-size: 24px;
   float: right;
-  color: black !important;
   z-index: 12;
 
+}
+
+.d-flex.justify-content-center.align-items-center.position-relative.mb-2 h3{
+  font-size:2.1rem
 }
 
 b{
@@ -705,6 +719,50 @@ a.white:hover{
   text-decoration: underline;
 }
 
+.hoverThis{
+  position: absolute;
+  right:0
+}
+
+
+.card {
+  padding: .6em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
+  box-shadow: 0px 15px 30px 2px rgba(4, 47, 78, 0.26);
+  position: relative;
+  border: none;
+  z-index: 25;
+  margin-bottom: 1.5em;
+  border-radius: .75rem;
+}
+
+.card .ques {
+  color: #0B66A6;
+  font-size:1.2em;
+  margin: 0 !important;
+  width: 90%;
+  font-weight:500;
+  line-height: 1.2;
+  padding:.5em
+}
+
+.card .caret-down {
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s;
+  font-size: 22px;
+  float: right;
+
+  z-index: 12;
+  color: #0B66A6;
+
+}
+
+.card-body {
+
+  padding: .5em;
+}
+
 #nav .nav-tabs .nav-link.active {
   color: #0F75BC;
   background-color: transparent;
@@ -721,6 +779,7 @@ a.white:hover{
   color: #0F75BC;
   position: relative;
   font-size:1.4em;
+  line-height: 1.1;
 }
 
 #nav .nav-tabs .nav-link:hover {
@@ -793,7 +852,8 @@ a.white:hover{
 }
 
 #nav2 .nav-tabs .nav-item:first-child .nav-link.active{
-  border-top-right-radius: 0rem;
+border-top-right-radius: 0rem;
+
 }
 
 #nav2 .nav-tabs .nav-item:nth-child(2) .nav-link.active,
@@ -807,23 +867,26 @@ a.white:hover{
 
 }
 
+#nav2  .nav-item{
 
+line-height: 1.3
+}
 
-#nav3 .nav-tabs {
+.blueNav .nav-tabs {
 
   border: 2px solid #4FC7F3;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 
-#nav3 .nav-tabs .nav-item {
+.blueNav .nav-tabs .nav-item {
   border: 2px solid #4FC7F3;
 
 }
 
 
 
-#nav3 .nav-tabs .nav-link.active {
+.blueNav .nav-tabs .nav-link.active {
   color: black;
   background-color: transparent;
   border-color: none;
@@ -831,12 +894,12 @@ a.white:hover{
   font-weight: 500;
 }
 
-#nav3 .nav-tabs .nav-item {
+.blueNav .nav-tabs .nav-item {
   margin-bottom: 0;
   /* background: white; */
 }
 
-#nav3 .nav-tabs .nav-link {
+.blueNav .nav-tabs .nav-link {
   border: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -845,42 +908,43 @@ a.white:hover{
   background: transparent;
 }
 
-#nav3 .nav-tabs .nav-item:first-child{
+.blueNav .nav-tabs .nav-item:first-child{
   border-top-left-radius: .9rem;
 }
 
 
 
-#nav3 .nav-tabs .nav-item:last-child{
+.blueNav .nav-tabs .nav-item:last-child{
   border-top-right-radius: .9rem;
 }
 
 
-#nav3 .nav-tabs .nav-item:nth-child(2) .nav-link,
+.blueNav .nav-tabs .nav-item:nth-child(2) .nav-link,
 {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
 
-#nav3 .nav-tabs .nav-item:first-child .nav-link.active{
+.blueNav .nav-tabs .nav-item:first-child .nav-link.active{
   border-top-right-radius: 0rem;
   border-top-left-radius: .8rem;
 }
 
-#nav3 .nav-tabs .nav-item:nth-child(2) .nav-link.active,
+.blueNav .nav-tabs .nav-item:nth-child(2) .nav-link.active,
 {
   border-top-right-radius: 0rem;
   border-top-left-radius: 0rem;
 }
 
-#nav3 .nav-tabs .nav-item:last-child .nav-link.active{
+.blueNav .nav-tabs .nav-item:last-child .nav-link.active{
   border-top-left-radius: 0rem;
   border-top-right-radius: .8rem;
 }
 
-.block0 #nav3 .nav-tabs .nav-item {
+.block0 .blueNav .nav-tabs .nav-item {
   position: relative;
   width: 33.3333333%;
+  line-height: 1.3
 }
 
 
@@ -935,6 +999,7 @@ a.white:hover{
   padding: .3em;
   border-radius: .2em;
   font-weight: 500;
+  color:#08609E !important
 }
 
 select.form-control[size] {
@@ -974,7 +1039,9 @@ header .nav-link {
 
   }
 
-
+.dropdown-item{
+  padding: .25rem .5rem;
+}
 
   .dropdown-menu-right .dropdown-menu {
     left: auto;
@@ -1033,15 +1100,41 @@ header .nav-link {
     color: #0B66A6;
   }
 
-  .dropdown-menu {
+  .navbar-nav .dropdown-menu {
     top: 27px;
-    left: auto;
+    left: 0;
     transform: translateY(0rem);
     right: 0;
     border: none;
     border-radius: .5rem;
     width:auto;
 
+  }
+
+  .navbar-nav .last {
+    top: 27px;
+
+    transform: translateY(0rem);
+    right: 0;
+    border: none;
+    border-radius: .5rem;
+    width:100%;
+    top: -2px;
+    width: 264px !important;
+    padding-top: 2.3em;
+    z-index: 999999;
+
+  }
+
+
+  .navbar-nav .nav-item:first-child:hover{
+    background: #F7E897;
+    border-radius: .5rem;
+  }
+
+  #drop3{
+    position: relative;
+    z-index: 99999999;
   }
 
   .dropdown-item:focus, .dropdown-item:hover {
@@ -1581,6 +1674,33 @@ label.error {
   border-radius: 10px; */
 }
 
+
+.secondBlock .whiteBubble {
+    padding: 1.5em 1em;
+    position: relative;
+    z-index: 1;
+    border-radius: .8em;
+    margin: 0em 0em 2em 0em;
+    z-index: 99;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
+    box-shadow: 0px 0px 14px 2px rgba(191,210,223,.66);
+    border-radius: 20px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: 0px solid transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.secondBlock a:hover .whiteBubble {
+
+    transform: scale(1.00);
+    border: 0px solid #A5E76D;
+
+}
+
 .cc-selector  {
   position: relative;
   margin-bottom: 2em;
@@ -1681,6 +1801,22 @@ right: -12px;
   background:#90979E
 }
 
+
+.form {
+  width: 8rem;
+  left: calc(50% - 4rem);
+  bottom: 0;
+  padding: 7px;
+  border-radius: 20px;
+  font-size: 15px;
+  color:  black;
+  /* background: #0E7B9B; */
+  position: relative;
+  border: #ADEB5C;
+
+
+background: linear-gradient(0deg, #ADEB5C, #ADEB5C);
+}
 
 
 
