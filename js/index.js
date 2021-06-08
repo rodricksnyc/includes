@@ -1,59 +1,107 @@
 
 
 
-  //hover for dropdown items in main navbar
+//hover for dropdown items in main navbar
 
-  $('.dropdown > a').click(function(){
-        location.href = this.href;
-    });
+$('.dropdown > a').click(function(){
+  location.href = this.href;
+});
 
-  var $dropdown = $(".navbar .nav-item");
-  var $dropdownToggle = $(".dropdown-toggle");
-  var $dropdownMenu = $(".dropdown-menu");
-  var showClass = "show";
-  // var last = $('#drop3')
-  var lastD = $('#drop3').closest('.dropdown').find('.dropdown-menu').addClass('last')
+var $dropdown = $(".navbar .nav-item");
+var $dropdownToggle = $(".dropdown-toggle");
+var $dropdownMenu = $(".dropdown-menu");
+var showClass = "show";
+// var last = $('#drop3')
+var lastD = $('#drop3').closest('.dropdown').find('.dropdown-menu').addClass('last')
 
-  $(window).on("load resize", function() {
-    if (this.matchMedia("(min-width: 992px)").matches) {
-      $dropdown.hover(
-        function() {
-          var $this = $(this);
-          $this.addClass(showClass);
-          $this.find($dropdownToggle).attr("aria-expanded", "true");
-          $this.find($dropdownMenu).addClass(showClass);
+$(window).on("load resize", function() {
+  if (this.matchMedia("(min-width: 992px)").matches) {
+    $dropdown.hover(
+      function() {
+        var $this = $(this);
+        $this.addClass(showClass);
+        $this.find($dropdownToggle).attr("aria-expanded", "true");
+        $this.find($dropdownMenu).addClass(showClass);
 
-          $('.nav-link.dropdown-toggle').not('.active').closest('.nav-item').find('.dropdown-menu').addClass('lightGold')
-          $('.nav-link.dropdown-toggle.active').closest('.nav-item').find('.dropdown-menu').addClass('goldBackground')
-
-
+        $('.nav-link.dropdown-toggle').not('.active').closest('.nav-item').find('.dropdown-menu').addClass('lightGold')
+        $('.nav-link.dropdown-toggle.active').closest('.nav-item').find('.dropdown-menu').addClass('goldBackground')
 
 
-          // var width1 = $(this).find('.nav-link').width()
-          //
-          // var width2 = $(this).find('.dropdown-menu').width()
-          //
-          // $(last).css('width', lastD)
 
 
-        },
-        function() {
-          var $this = $(this);
-          $this.removeClass(showClass);
-          $this.find($dropdownToggle).attr("aria-expanded", "false");
-          $this.find($dropdownMenu).removeClass(showClass);
-        }
-      );
-    } else {
-      $dropdown.off("mouseenter mouseleave");
-    }
-  });
+        // var width1 = $(this).find('.nav-link').width()
+        //
+        // var width2 = $(this).find('.dropdown-menu').width()
+        //
+        // $(last).css('width', lastD)
+
+
+      },
+      function() {
+        var $this = $(this);
+        $this.removeClass(showClass);
+        $this.find($dropdownToggle).attr("aria-expanded", "false");
+        $this.find($dropdownMenu).removeClass(showClass);
+      }
+    );
+  } else {
+    $dropdown.off("mouseenter mouseleave");
+  }
+});
 
 
 // $('.navbar-nav .dropdown-menu:nth-child(3)').mouseenter(() => {
 
 // })
 
+//active links
+
+
+var path = window.location.href.split(location.search||location.hash||/[?#]/)[0]
+
+// path.hash="";
+
+$('.navbar-nav li .nav-link').each(function() {
+  if (this.href == path) {
+    $(this).addClass('active');
+  }
+  else {
+    $(this).removeClass('active');
+  }
+
+});
+
+
+$("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+  var id = $(e.target).attr("href").substr(1);
+  id = id.substring(0, id.length-4);
+  window.location.hash = id;
+});
+
+var hash = (window.location.hash);
+$('.nav-tabs a[href="' + hash + '-tab"]').tab('show');
+
+
+var hash = window.location.hash;
+hash && $('.nav-tabs a[href="' + hash + '"]').tab('show')
+
+
+$('.nav-tabs a').click(() => {
+
+
+  window.location.hash = this.hash;
+
+
+});
+
+
+
+// $(window).on('load', () => {
+//
+//   $('html, body').animate({scrollTop : 0},800);
+//
+// })
+//
 
 
 
@@ -61,81 +109,81 @@
 
 $('.openTab2').click(function(e){
   e.preventDefault()
- $('#nav [data-type="students"]').tab('show')
+  $('.nav-tabs [data-type="students"]').tab('show')
 
 })
 
 $('.openTab1').click(function(e){
   e.preventDefault()
- $('#nav [data-type="projects"]').tab('show')
+  $('.nav-tabs [data-type="projects"]').tab('show')
 
 })
 
 $('.openTab3').click(function(e){
   e.preventDefault()
- $('#nav [data-type="partners"]').tab('show')
+  $('.nav-tabs [data-type="partners"]').tab('show')
 
 })
 
 $('.openTab4').click(function(e){
   e.preventDefault()
- $('#nav [data-type="products"]').tab('show')
+  $('.nav-tabs [data-type="products"]').tab('show')
 
 })
 
 
 $('.openTab5').click(function(e){
   e.preventDefault()
- $('#nav [data-type="vision"]').tab('show')
+  $('.nav-tabs [data-type="vision"]').tab('show')
 
 })
 
 $('.openTab6').click(function(e){
   e.preventDefault()
- $('#nav [data-type="network"]').tab('show')
+  $('.nav-tabs [data-type="network"]').tab('show')
 
 })
 
 $('.openTab7').click(function(e){
   e.preventDefault()
- $('#nav [data-type="goals"]').tab('show')
+  $('.nav-tabs [data-type="goals"]').tab('show')
 
 })
 
 $('.openTab8').click(function(e){
   e.preventDefault()
- $('#nav [data-type="leadership"]').tab('show')
+  $('.nav-tabs [data-type="leadership"]').tab('show')
 
 })
 
 $('.openTab9').click(function(e){
   e.preventDefault()
- $('#nav [data-type="expansion"]').tab('show')
+  $('.nav-tabs [data-type="expansion"]').tab('show')
 
 })
 
 
 $('.openTab10').click(function(e){
   e.preventDefault()
- $('#nav [data-type="prep"]').tab('show')
+  $('.nav-tabs [data-type="prep"]').tab('show')
 
 })
 
 $('.openTab11').click(function(e){
   e.preventDefault()
- $('#nav [data-type="siic"]').tab('show')
+  $('.nav-tabs [data-type="siic"]').tab('show')
 
 })
 
 $('.openTab12').click(function(e){
   e.preventDefault()
- $('#nav [data-type="academic"]').tab('show')
+  $('.nav-tabs [data-type="academic"]').tab('show')
 
 })
 
 $('.openTab13').click(function(e){
   e.preventDefault()
- $('#nav [data-type="workforce"]').tab('show')
+  $('.nav-tabs [data-type="workforce"]').tab('show')
 
 })
 
@@ -145,53 +193,53 @@ $('.openTab13').click(function(e){
 //animations for landing page
 $(window).on('scroll', function() {
 
-	var screenTop = $(window).scrollTop();
-	var screenBottom = $(window).scrollTop() + window.innerHeight;
+  var screenTop = $(window).scrollTop();
+  var screenBottom = $(window).scrollTop() + window.innerHeight;
 
-	$('section').each(function() {
-		var elementTop = $(this).offset().top;
-		var elementBottom = $(this).offset().top + $(this).outerHeight();
+  $('section').each(function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = $(this).offset().top + $(this).outerHeight();
 
-		if ((screenBottom > elementTop + ($(this).find('.heros').height() / 2  )) && (screenTop < elementBottom)) {
-			$('section').removeClass('active')
-			$(this).addClass('active')
-		}
-		else {
-			$(this).removeClass('active')
-		}
-	})
-
-
-	if ($('.block5').hasClass('active')) {
+    if ((screenBottom > elementTop + ($(this).find('.heros').height() / 2  )) && (screenTop < elementBottom)) {
+      $('section').removeClass('active')
+      $(this).addClass('active')
+    }
+    else {
+      $(this).removeClass('active')
+    }
+  })
 
 
-const counters = document.querySelectorAll('.counter');
-const speed = 500
+  if ($('.block5').hasClass('active')) {
 
-counters.forEach(counter => {
-  const updateCount = () => {
-    const target = +counter.getAttribute('data-target')
-    const count = +counter.innerText
 
-  	const inc = target / speed
+    const counters = document.querySelectorAll('.counter');
+    const speed = 500
 
-    if (count < target) {
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target')
+        const count = +counter.innerText
 
-    			counter.innerText = Math.ceil(count + inc)
+        const inc = target / speed
 
-    			setTimeout(updateCount, 1);
-    		} else {
-    			counter.innerText = target;
-    		}
+        if (count < target) {
+
+          counter.innerText = Math.ceil(count + inc)
+
+          setTimeout(updateCount, 1);
+        } else {
+          counter.innerText = target;
+        }
+
+      }
+      updateCount();
+
+
+
+    })
 
   }
-  	updateCount();
-
-
-
-})
-
-}
 
 })
 
@@ -199,38 +247,38 @@ counters.forEach(counter => {
 
 $(window).on('load', function() {
 
-	if ($('.block15, .block20').hasClass('active')) {
+  if ($('.block15, .block20').hasClass('active')) {
 
 
 
-const counters = document.querySelectorAll('.counter');
-const speed = 500
+    const counters = document.querySelectorAll('.counter');
+    const speed = 500
 
-counters.forEach(counter => {
-  const updateCount = () => {
-    const target = +counter.getAttribute('data-target')
-    const count = +counter.innerText
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target')
+        const count = +counter.innerText
 
-  	const inc = target / speed
+        const inc = target / speed
 
-    if (count < target) {
+        if (count < target) {
 
-    			counter.innerText = Math.ceil(count + inc)
+          counter.innerText = Math.ceil(count + inc)
 
-    			setTimeout(updateCount, 1);
-    		} else {
-    			counter.innerText = target;
-    		}
+          setTimeout(updateCount, 1);
+        } else {
+          counter.innerText = target;
+        }
+
+      }
+      updateCount();
+
+
+
+
+    })
 
   }
-  	updateCount();
-
-
-
-
-})
-
-}
 
 
 })
@@ -274,20 +322,7 @@ $("a, button, input, [tabIndex='0'], #one, .closeRadio, .card-link").on('focusou
 
 
 
-//active links
 
-
-var path = window.location.href
-
-$('.navbar-nav li .nav-link').each(function() {
-  if (this.href === path) {
-    $(this).addClass('active');
-  }
-  else {
-    $(this).removeClass('active');
-  }
-
-});
 
 
 //contact form
@@ -565,16 +600,16 @@ if ($(document).innerWidth() <= 767) {
 
 
 
-	var hash = 1;
+var hash = 1;
 
-	$(".ques").each(function(i){
-		var count = "ques" + (++hash)
+$(".ques").each(function(i){
+  var count = "ques" + (++hash)
 
-		$(this).attr("href",  "#" + count);
+  $(this).attr("href",  "#" + count);
 
 
-		$(this).closest('.card').find('.collapse').attr("id", count);
-	});
+  $(this).closest('.card').find('.collapse').attr("id", count);
+});
 
 
 
@@ -668,156 +703,156 @@ $("#theform").validate(
 
   var expand1 = function() {
 
-  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
-  $('.expandAll1 .collapse').collapse('toggle');
+    $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+    $('.expandAll1 .collapse').collapse('toggle');
 
 
-  if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon"></i>')
+    if ( $(this).html() == 'Collapse All') {
+      $('.changeIcon').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon"></i>')
 
 
-  }
+    }
 
-  if ( $(this).html() == 'Expand All') {
-    $('.changeIcon').replaceWith('<i class="fal fa-expand-alt blue changeIcon"></i>')
-  }
-
-}
-
-$('#toggleAccordion').keypress(
-  expand1
-
-).click(
-  expand1
-);
-
-
-var expand2 = function() {
-
-  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
-  $('.expandAll2 .collapse').collapse('toggle');
-
-
-  if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon2').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon2"></i>')
-
+    if ( $(this).html() == 'Expand All') {
+      $('.changeIcon').replaceWith('<i class="fal fa-expand-alt blue changeIcon"></i>')
+    }
 
   }
 
-  if ( $(this).html() == 'Expand All') {
-    $('.changeIcon2').replaceWith('<i class="fal fa-expand-alt blue changeIcon2"></i>')
-  }
+  $('#toggleAccordion').keypress(
+    expand1
 
-}
-
-$('#toggleAccordion2').keypress(
-  expand2
-
-).click(
-  expand2
-);
+  ).click(
+    expand1
+  );
 
 
+  var expand2 = function() {
 
-var expand3 = function() {
-
-  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
-  $('.expandAll3 .collapse').collapse('toggle');
-
-
-  if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon3').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon3"></i>')
+    $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+    $('.expandAll2 .collapse').collapse('toggle');
 
 
-  }
-
-  if ( $(this).html() == 'Expand All') {
-    $('.changeIcon3').replaceWith('<i class="fal fa-expand-alt blue changeIcon3"></i>')
-  }
-
-}
-
-$('#toggleAccordion3').keypress(
-  expand3
-
-).click(
-  expand3
-);
+    if ( $(this).html() == 'Collapse All') {
+      $('.changeIcon2').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon2"></i>')
 
 
-var expand4 = function() {
+    }
 
-  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
-  $('.expandAll4 .collapse').collapse('toggle');
-
-
-  if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon4').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon4"></i>')
-
+    if ( $(this).html() == 'Expand All') {
+      $('.changeIcon2').replaceWith('<i class="fal fa-expand-alt blue changeIcon2"></i>')
+    }
 
   }
 
-  if ( $(this).html() == 'Expand All') {
-    $('.changeIcon4').replaceWith('<i class="fal fa-expand-alt blue changeIcon4"></i>')
-  }
+  $('#toggleAccordion2').keypress(
+    expand2
 
-}
-
-$('#toggleAccordion4').keypress(
-  expand4
-
-).click(
-  expand4
-);
-
-var expand5 = function() {
-
-  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
-  $('.expandAll5 .collapse').collapse('toggle');
-
-
-  if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon5').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon5"></i>')
-
-
-  }
-
-  if ( $(this).html() == 'Expand All') {
-    $('.changeIcon5').replaceWith('<i class="fal fa-expand-alt blue changeIcon5"></i>')
-  }
-
-}
-
-$('#toggleAccordion5').keypress(
-  expand5
-
-).click(
-  expand5
-);
+  ).click(
+    expand2
+  );
 
 
 
-var expand6 = function() {
+  var expand3 = function() {
 
-  $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
-  $('.expandAll6 .collapse').collapse('toggle');
+    $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+    $('.expandAll3 .collapse').collapse('toggle');
 
 
-  if ( $(this).html() == 'Collapse All') {
-    $('.changeIcon6').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon6"></i>')
+    if ( $(this).html() == 'Collapse All') {
+      $('.changeIcon3').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon3"></i>')
 
+
+    }
+
+    if ( $(this).html() == 'Expand All') {
+      $('.changeIcon3').replaceWith('<i class="fal fa-expand-alt blue changeIcon3"></i>')
+    }
 
   }
 
-  if ( $(this).html() == 'Expand All') {
-    $('.changeIcon6').replaceWith('<i class="fal fa-expand-alt blue changeIcon6"></i>')
+  $('#toggleAccordion3').keypress(
+    expand3
+
+  ).click(
+    expand3
+  );
+
+
+  var expand4 = function() {
+
+    $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+    $('.expandAll4 .collapse').collapse('toggle');
+
+
+    if ( $(this).html() == 'Collapse All') {
+      $('.changeIcon4').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon4"></i>')
+
+
+    }
+
+    if ( $(this).html() == 'Expand All') {
+      $('.changeIcon4').replaceWith('<i class="fal fa-expand-alt blue changeIcon4"></i>')
+    }
+
   }
 
-}
+  $('#toggleAccordion4').keypress(
+    expand4
 
-$('#toggleAccordion6').keypress(
-  expand6
+  ).click(
+    expand4
+  );
 
-).click(
-  expand6
-);
+  var expand5 = function() {
+
+    $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+    $('.expandAll5 .collapse').collapse('toggle');
+
+
+    if ( $(this).html() == 'Collapse All') {
+      $('.changeIcon5').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon5"></i>')
+
+
+    }
+
+    if ( $(this).html() == 'Expand All') {
+      $('.changeIcon5').replaceWith('<i class="fal fa-expand-alt blue changeIcon5"></i>')
+    }
+
+  }
+
+  $('#toggleAccordion5').keypress(
+    expand5
+
+  ).click(
+    expand5
+  );
+
+
+
+  var expand6 = function() {
+
+    $(this).html() == "Collapse All" ? $(this).html('Expand All') : $(this).html('Collapse All');
+    $('.expandAll6 .collapse').collapse('toggle');
+
+
+    if ( $(this).html() == 'Collapse All') {
+      $('.changeIcon6').replaceWith('<i class="far fa-compress-arrows-alt blue changeIcon6"></i>')
+
+
+    }
+
+    if ( $(this).html() == 'Expand All') {
+      $('.changeIcon6').replaceWith('<i class="fal fa-expand-alt blue changeIcon6"></i>')
+    }
+
+  }
+
+  $('#toggleAccordion6').keypress(
+    expand6
+
+  ).click(
+    expand6
+  );

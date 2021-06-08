@@ -71,8 +71,8 @@ header .logo{
 }
 
 .absoRight{
-  top:25px;
-  right:15px;
+  top: 15px;
+right: 20px;
   position: absolute;
 }
 
@@ -763,6 +763,9 @@ a.white:hover{
   padding: .5em;
 }
 
+
+
+
 #nav .nav-tabs .nav-link.active {
   color: #0F75BC;
   background-color: transparent;
@@ -1120,7 +1123,7 @@ header .nav-link {
     border-radius: .5rem;
     width:100%;
     top: -2px;
-    width: 264px !important;
+    width: 270px !important;
     padding-top: 2.3em;
     z-index: 999999;
 
