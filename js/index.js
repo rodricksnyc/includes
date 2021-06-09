@@ -283,9 +283,16 @@ $('.nav-tabs a').click(() => {
 
 $(window).on('load', () => {
     // $('html, body').scrollTop(0)
-  $('html, body').animate({scrollTop: $("#Home").offset().top}, 600);
+  // $('html, body').animate({scrollTop: $("#Home").offset().top}, 500);
 })
 
+
+
+$('.openTab1').click(function(e){
+  e.preventDefault()
+  $('.nav-tabs [data-type="projects"]').tab('show')
+
+})
 
 $('.openTab2').click(function(e){
   e.preventDefault()
@@ -293,11 +300,6 @@ $('.openTab2').click(function(e){
 
 })
 
-$('.openTab1').click(function(e){
-  e.preventDefault()
-  $('.nav-tabs [data-type="projects"]').tab('show')
-
-})
 
 $('.openTab3').click(function(e){
   e.preventDefault()
@@ -368,6 +370,37 @@ $('.openTab13').click(function(e){
 })
 
 //active links tab pane on nav click end
+
+$('.navbar-nav a').click(() => {
+
+if ($('a[data-type="students"]').is('.active')){
+  // alert("sdiguybdsibi")
+}
+
+
+})
+
+$('a[data-type="students"]').click(() => {
+
+  $('.imgBottomLeft').show()
+  $('.imgBottom').addClass('students').show()
+});
+
+
+$('a[data-type="projects"]').click(() => {
+
+  $('.imgBottomLeft').hide()
+  $('.imgBottom').removeClass('students').show()
+});
+
+
+$('.nav-tabs [data-type="products"], .nav-tabs [data-type="partners"]').click(() => {
+
+  $('.imgBottomLeft').hide()
+  $('.imgBottom').hide()
+});
+
+
 
 
 

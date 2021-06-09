@@ -95,6 +95,18 @@ right: 20px;
   z-index: 4;
 }
 
+.imgBottom.students{
+  bottom: calc(50% - 19em);
+}
+
+.imgBottomLeft{
+position: absolute;
+bottom: 0em;
+left: 0;
+z-index: 4;
+display: none
+}
+
 .topSection {
   display: flex;
   flex-direction: column;
@@ -1739,19 +1751,19 @@ label.error {
     border-radius: 20px;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    border: 0px solid transparent;
+    /* border: 0px solid transparent; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
+/*
 .secondBlock a:hover .whiteBubble {
 
     transform: scale(1.00);
     border: 0px solid #A5E76D;
 
-}
+} */
 
 .cc-selector  {
   position: relative;
@@ -1855,7 +1867,7 @@ right: -12px;
 
 
 .form {
-  width: 8rem;
+
   left: calc(50% - 4rem);
   bottom: 0;
   padding: 7px;
@@ -1865,12 +1877,22 @@ right: -12px;
   /* background: #0E7B9B; */
   position: relative;
   border: #ADEB5C;
-
-
+  width: 28%;
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+box-shadow: 0px 10px 20px rgba(4, 90, 150, 0.1);
 background: linear-gradient(0deg, #ADEB5C, #ADEB5C);
+font-weight: 500
 }
 
 
+.form:hover {
+
+  width: 48%;
+  color:  black;
+}
 
 
 #sendMessage:hover, #sendMessage2:hover {
