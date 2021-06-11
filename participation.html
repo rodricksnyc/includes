@@ -24,6 +24,24 @@
 
 	<div class="container-fluid overflow-hidden position-relative">
 
+		<div class="hidden">
+			<form id="tipue_search" action="search.html">
+				<input type="text" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search terms" required>
+				<input type="image" id="search" name="" src="tipuesearch/img/search.png" class="tipue_button search" alt="Search">
+
+
+				<label for="per_page" style="display:none">Results per page:</label>
+				<select name="per_page" id="tipue_per_page" style="display:none">
+					<option value="7" selected="selected">7</option>
+					<option value="20">20</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+				</select>
+
+			</form>
+
+		</div>
+
 
 		<img class="imgBottom img-fluid" src="images/green-bottom.svg" alt="">
 
@@ -31,13 +49,11 @@
 
 		<header id="Home">
 			<nav class="navbar navbar-expand-lg">
-				<div class="container-fluid">
+				<div class="container-fluid position-relative">
 					<a class="pb-0" href="">
 						<img src="images/Includes-logo.png" class="img-fluid logo" alt="Population Assessment of Tobacco and Health Logo">
 					</a>
-					<button class="navbar-toggler collapsed mr-2" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+
 
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<ul class="navbar-nav d-block d-lg-flex ml-auto text-right d-flex align-items-center">
@@ -75,9 +91,11 @@
 							</li>
 
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="stem.html" id="drop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<a class="nav-link" href="stem.html" id="drop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									BP in STEM
 								</a>
+
+								<!-- <span class="caret-down"><i class="fal fa-angle-down"></i></span> -->
 								<div class="dropdown-menu last" aria-labelledby="drop3">
 									<a class="dropdown-item" href="stem.html#tabs-1">Preparation for STEM Education</a>
 									<a class="dropdown-item" href="stem.html#tabs-2">Student Interest, Identity,<br> & Confidence</a>
@@ -91,7 +109,17 @@
 
 						</ul>
 
-						<a href="" class="search blue"><i class="fal fa-search"></i></a>
+
+					</div>
+
+					<div class="position-relative">
+
+						<button class="navbar-toggler collapsed mr-2" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<a href="" class="search blue"><i class="far fa-search"></i></a>
+
 					</div>
 
 				</div>
@@ -130,19 +158,19 @@
 
 					<div class="secondBlock">
 						<a href="" tabindex="-1">
-						<div class="whiteBubble">
+							<div class="whiteBubble">
 
-							<p class="blue mb-0">Feedback on information display</p>
-							<i class="fal fa-arrow-right blue mb-0"></i>
-						</div>
+								<p class="blue mb-0">Feedback on information display</p>
+								<i class="fal fa-arrow-right blue mb-0"></i>
+							</div>
 						</a>
 
-					<a href="" tabindex="-1">
-						<div class="whiteBubble">
-							<p class="blue mb-0">Feeback on Alliance-specific examples in Broadening Participation in STEM </p>
-							<i class="fal fa-arrow-right blue mb-0"></i>
-						</div>
-					</a>
+						<a href="" tabindex="-1">
+							<div class="whiteBubble">
+								<p class="blue mb-0">Feeback on Alliance-specific examples in Broadening Participation in STEM </p>
+								<i class="fal fa-arrow-right blue mb-0"></i>
+							</div>
+						</a>
 
 						<button type="button" class="btn btn-info button-outlined mt-3 form" tabindex="-1" aria-hidden="false">Done</button>
 					</div>
@@ -151,7 +179,7 @@
 						<div class="col-xs-12 col-lg-12">
 
 
-							<form role="form" type="post" id="theform">
+							<form role="form" type="post"  id="theform">
 
 								<div class="form-group">
 									<label for="formControl1">Name</label>
@@ -175,19 +203,19 @@
 
 											<div class="form-check oneQuestion">
 												<i class="fal fa-info-circle"></i>
-												<input id="answer1" type="radio" name="time" value="1" class="form-check-input" checked>
+												<input id="answer1" type="radio" name="reason" value="general" class="form-check-input" checked>
 												<label class="rainbow form-check-label" for="answer1"><p class="oneBlack">General</p></label>
 											</div>
 											<div class="form-check oneQuestion">
 												<i class="fal fa-question-circle"></i>
-												<input id="answer2" type="radio" name="time" value="2" class="form-check-input">
+												<input id="answer2" type="radio" name="reason" value="question" class="form-check-input">
 												<label class="rainbow form-check-label" for="answer2"><p class="oneBlack">Question</p></label>
 
 											</div>
 
 											<div class="form-check oneQuestion">
 												<i class="far fa-wrench"></i>
-												<input id="answer3" type="radio" name="time" value="3" class="form-check-input">
+												<input id="answer3" type="radio" name="reason" value="help" class="form-check-input">
 												<label class="rainbow form-check-label" for="answer3"><p class="oneBlack">Tech Help</p></label>
 											</div>
 
@@ -206,10 +234,13 @@
 								</button>
 
 
-
-
-
 							</form>
+							<div id="success_message" style="display:flex;justify-content:center;display:none;overflow:none">
+								<h6>Your message was sent successfully!</h6>
+							</div>
+							<div id="error_message" style="display:flex;justify-content: center;display:none;overflow:none">
+								<h5>Sorry there was an error sending your form.</h5>
+							</div>
 
 
 						</div>
@@ -246,19 +277,19 @@
 				<div class="container-fluid">
 
 					<div id="nav" class="largePadding">
-						<ul class="nav nav-tabs" role="tablist">
+						<ul class="nav nav-tabs position-relative" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link  active text-center" data-type="projects" data-toggle="tab" href="#tabs-1" role="tab">Projects</a>
+								<a class="nav-link active text-center" data-type="projects" data-toggle="tab" href="#tabs-1" role="tab"><i class="fal fa-tasks-alt"></i><br>Projects</a>
 
 							</li>
 							<li class="nav-item">
-								<a class="nav-link  text-center" data-type="students" data-toggle="tab" href="#tabs-2" role="tab">Students & Educators</a>
+								<a class="nav-link text-center" data-type="students" data-toggle="tab" href="#tabs-2" role="tab"><i class="fal fa-users-class"></i><br>Students & Educators</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link  text-center"  data-type="partners" data-toggle="tab" href="#tabs-3" role="tab">Partners</a>
+								<a class="nav-link  text-center"  data-type="partners" data-toggle="tab" href="#tabs-3" role="tab"><i class="fal fa-handshake"></i><br>Partners</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link  text-center" data-type="products" data-toggle="tab" href="#tabs-4" role="tab">Products</a>
+								<a class="nav-link  text-center" data-type="products" data-toggle="tab" href="#tabs-4" role="tab"><i class="fal fa-box-check"></i><br>Products</a>
 							</li>
 
 
@@ -403,8 +434,6 @@
 							<div class="largePadding">
 								<h3 class="blue text-center pt-4">PK-20 Students</h3>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-
 
 
 								<div id="nav2">
@@ -2610,7 +2639,9 @@ crossorigin="anonymous"></script>
 
 
 <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+<script src="js/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
+
 <script src="form.js"></script>
 </body>
 </html>
