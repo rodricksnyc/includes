@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta content-type="text/plain" charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link type="image/png" href="images/logo.png" rel="icon">
+<link rel="stylesheet" href="vendorlibs/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="vendorlibs/font-awesome-pro/css/all.css">
+<link rel="stylesheet" href="vendorlibs/normalize.min.css">
+
+<link rel="stylesheet" href="css/styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+
+#map-canvas{
+min-height:800px;
+}
+
+  .gm-style .gm-style-iw {
+max-width:264px !important;
+background: #F5FCFE !important;
+border-radius: 1rem !important;
+padding: 1em !important;
+	}
+
+.gm-style p.blue{
+
+font-size:17px;
+line-height:18px;
+}
+.gm-ui-hover-effect{
+	top: -3px !important;
+	right: -3px !important;
+}
+
+.gm-style p{
+font-size:15px;
+line-height:18px;
+margin-bottom:.5em
+}
+
+.gm-style-iw-d{
+	overflow: hidden !important
+}
+
+
+</style>
+
+<body>
+
+<select id="type" onchange="filterMarkers(this.value);">
+	<option value="">Please select category</option>
+	<option value="Aspire">ASPIRE</option>
+	<option value="car">car</option>
+	<option value="third">third</option>
+</select>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-lg-12">
+			<div id="map-canvas"></div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script type="text/javascript" src="vendorlibs/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+<!-- <script src="js/TweenMax.min.js"></script>
+
+<script type="text/javascript" src="js/index.js"></script> -->
+<script src="form.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGBgMl7eo2YMsoIQckljjlJJ5aFsTs0g4&libraries=places"></script>
+ <!-- <script>
+
+var gmarkers1 = [];
+var markers1 = [];
+var infowindow = new google.maps.InfoWindow({
+content: ''
+
+});
+
+markers1 = [
+['0', '<div class="center"><a href="https://stackoverflow.com/questions/27866067/google-maps-edit-multiple-markers-from-array"><h1 class="modalFont"><strong>Maxwell-GunterA AFB</strong><br>Montgomery, Alabama</h1></a></div>', 32.4107341, -86.2564933, 'AL'],
+
+['1', '12345', 64.6749262, -147.1978283, 'AK'],
+
+['2', '<div class="center"><h1 class="modalFont"><strong>Joint Base Elmendorf-Richardson</strong><br>Anchorage, Alaska</h1><br><button class="btn btn-modal" data-toggle="modal" data-target="#fsModal2">View More</button></div>', 61.244851,-149.7385459, 'AK'],
+
+['3', '<div class="center"><h1 class="modalFont"><strong>Davis-Monthan AFB</strong><br>Tuscon, Arizona</h1><br><button class="btn btn primary btn-modal" data-toggle="modal" data-target="#fsModal3">View More</button></div>', 32.181452,-110.8779985, 'AZ'],
+
+];
+
+
+function initialize() {
+	var center = new google.maps.LatLng(37.850033, -99.6500523);
+	var mapOptions = {
+		zoom: 4,
+		icon: {
+
+			url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+
+		},
+		center: center,
+		styles:
+
+		[
+			{
+				"featureType": "all",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#63B5E5"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "##000000"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#0B66A6"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"lightness": "62"
+					},
+					{
+						"color": "#0B66A6"
+					},
+					{
+						"saturation": "11"
+					},
+					{
+						"gamma": "3.19"
+					},
+					{
+						"weight": "2.17"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"gamma": 0.01
+					},
+					{
+						"lightness": 20
+					},
+					{
+						"weight": "1.92"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"saturation": -31
+					},
+					{
+						"lightness": -33
+					},
+					{
+						"weight": "1.75"
+					},
+					{
+						"gamma": 0.8
+					},
+					{
+						"color": "#8D95A9"
+					},
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 30
+					},
+					{
+						"saturation": 30
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#56D2FF"
+					},
+					{
+						"gamma": "1.34"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"saturation": 20
+					}
+				]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 20
+					},
+					{
+						"saturation": -20
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 10
+					},
+					{
+						"saturation": -30
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"saturation": 25
+					},
+					{
+						"lightness": 25
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "all",
+				"stylers": [
+					{
+						"lightness": -20
+					}
+				]
+			}
+		]
+		// mapTypeId: google.maps.MapTypeId.TERRAIN
+	};
+
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	for (i = 0; i < markers1.length; i++) {
+		addMarker(markers1[i]);
+	}
+}
+
+function addMarker(marker) {
+	var category = marker[4];
+	var title = marker[1];
+	var website = marker[1];
+	var pos = new google.maps.LatLng(marker[2], marker[3]);
+	var content = marker[1];
+
+
+
+	var icon = {
+		url: "images/map1.svg", // url
+		scaledSize: new google.maps.Size(30, 46)
+	};
+
+	marker1 = new google.maps.Marker({
+		title: title,
+		website: website,
+		position: pos,
+		category: category,
+		icon: icon,
+		map: map
+		// animation: google.maps.Animation.DROP
+	});
+
+	gmarkers1.push(marker1);
+
+	// Marker click listener
+	google.maps.event.addListener(marker1, 'click', (function (marker1, content) {
+		return function () {
+			console.log('Gmarker 1 gets pushed');
+			infowindow.setContent(content);
+			infowindow.open(map, marker1);
+			// map.panTo(this.getPosition());
+			// map.setZoom(4);
+		}
+	})(marker1, content));
+}
+
+
+var coords = {
+
+	'AL': '32.3437795,-86.3162491',
+	'AZ': '33.6050976,-112.4059219',
+	'AR': '34.7239848,-92.408139',
+	'CO': '38.8756003,-104.8987861',
+	'CT': '41.7656821,-72.7151922',
+	'DE': '39.1564772,-75.5484394',
+	'DC': '38.8935754,-77.0847874',
+	'FL': '28.4810968,-81.5091777',
+	'GA': '32.6400187,-83.6004738',
+	'HI': '21.3438149,-157.9526339',
+	'ID': '43.0511713,-115.90115',
+	'IL': '38.5415911,-89.8571982',
+	'IN': '39.7796999,-86.2731765',
+	'IA': '41.5666486,-93.6767273',
+	'KS': '37.6645257,-97.5841202',
+	'KY': '38.0282464,-84.6119918',
+	'LA': '32.4970956,-93.6472675',
+	'MD': '38.8019976,-76.9531102',
+	'MA': '42.3143285,-71.0404953',
+	'MI': '42.7086601,-84.6296388',
+	'MN': '44.944414,-93.1434765',
+	'MS': '33.6383132,-88.4671825',
+	'MO': '38.7282731,-93.580926',
+	'MT': '47.5050301,-111.2015174',
+	'ME': '43.666989,-70.2817261',
+	'NE': '41.1173495,-95.9397932',
+	'NV': '36.2439302,-115.0717566',
+	'NJ': '40.0426536,-74.5896913',
+	'NM': '32.8430482,-106.1191351',
+	'NY': '43.1163078,-78.9437516',
+	'NC': '35.1713704,-79.0195298',
+	'ND': '47.9620832,-97.4095188',
+	'OH': '39.8092582,-84.0914045',
+	'OK': '35.2884167,-97.5048412',
+	'OR': '44.9330915,-123.0984187',
+	'PA': '40.5163114,-80.1720404',
+	'SC': '33.4873136,-80.9006758',
+	'SD': '44.1538145,-103.0923543',
+	'TN': '35.3831868,-86.0325496',
+	'UT': '41.10968,-111.9848871',
+	'VA': '37.0835074,-76.3614128',
+	'WA': '47.6159717,-117.6749975',
+	'WY': '41.1509329,-104.8802145',
+	'GE': '49.4400412,7.5949403',
+	'GU': '13.5757078,144.894553',
+	'IT': '46.0359593,12.6122766',
+	'PL': '38.7538842,-27.0891318',
+	'SK': '37.5650168,126.8491237',
+	'TK': '36.973463,35.4112259',
+	'UK': '52.3612619,0.4828775',
+	//the ones i am putting in different var
+	'US': '37.850033,-99.6500523',
+	'AK': '64.8283479,-147.7392131',
+	'CA': '34.0201598,-118.6926032',
+	'JP': '35.5079382,139.2080157',
+	'TX': '29.3861909,-98.6358991',
+};
+
+
+function changeMap(city) {
+
+	var c = coords[city].split(',');
+	map.panTo(new google.maps.LatLng(c[0], c[1]));
+	map.setZoom(8);
+}
+
+initialize();
+
+
+</script> -->
+
+<script>
+var gmarkers1 = [];
+var markers1 = [];
+var infowindow = new google.maps.InfoWindow({
+	content: ''
+});
+
+markers1 = [
+	['0', '<div class="d-flex flex-column"><p class="blue strong">Achieving the Dream (ATD) Network</p><p>Silver Spring, MD<br>20910</p><p>Alliance: <span class="strong">ASPIRE</span></p><p>Organization Type: <span class="strong">Foundation or other non-profit organization</span></p></div>', 38.9942321, -77.0294042, ['Aspire'], 'images/aspire-map.svg'],
+
+	['1', '<div class="d-flex flex-column"><p class="blue strong">ADVANCE Implementation Mentors Network</p><p>Bethlehem, PA<br>18015</p><p>Alliance: <span class="strong">ASPIRE</span></p><p>Organization Type: <span class="strong">Foundation or other non-profit organization</span></p></div>', 40.6048687,-75.3797127, ['Aspire'], 'images/aspire-map.svg'],
+
+	['2', '<div class="d-flex flex-column"><p class="blue strong">American Association for the Advancement of Science</p><p>Washington, DC<br>20005</p><p>Alliance: <span class="strong">ASPIRE</span></p><p>Organization Type: <span class="strong">Foundation or other non-profit organization</span></p></div>', 38.9000001,-77.0304629, ['Aspire'], 'images/aspire-map.svg'],
+
+	['3', '<div class="d-flex flex-column"><p class="blue strong">American Association of Physics Teachers</p><p>College Park, MD<br>20742</p><p>Alliance: <span class="strong">ASPIRE</span></p><p>Organization Type: <span class="strong">Foundation or other non-profit organization</span></p></div>', 38.972748,-76.9483733, ['Aspire'], 'images/aspire-map.svg'],
+
+
+	['4', '<div class="d-flex flex-column"><p class="blue strong">American Chemical Society</p><p>Washington, DC<br>20036</p><p>Alliance: <span class="strong">ASPIRE</span></p><p>Organization Type: <span class="strong">Foundation or other non-profit organization</span></p></div>', 38.9053482,-77.0383415, ['Aspire'], 'images/aspire-map.svg'],
+
+	['5', '<div class="d-flex flex-column"><p class="blue strong">American Mathematical Association of Two-Year Colleges (AMATYC)</p><p>Memphis, TN<br>38134</p><p>Alliance: <span class="strong">ASPIRE</span></p><p>Organization Type: <span class="strong">Foundation or other non-profit organization</span></p></div>', 35.1610765,-89.8687075, ['Aspire'], 'images/aspire-map.svg'],
+
+
+
+	['100', 'Title 2', 52.4357808, 4.981315699999973, ['third']],
+	['101', 'Title 3', 52.4555687, 5.039231599999994, ['car', 'third']],
+	['102', 'Title 4', 52.4555687, 5.029231599999994, ['second']]
+];
+
+
+
+function initialize() {
+	var center = new google.maps.LatLng(47.1000723,-163.7314545);
+	var mapOptions = {
+		zoom: 3,
+
+		center: center,
+		styles:
+
+		[
+			{
+				"featureType": "all",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#63B5E5"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "##000000"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"color": "#0B66A6"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"lightness": "62"
+					},
+					{
+						"color": "#0B66A6"
+					},
+					{
+						"saturation": "11"
+					},
+					{
+						"gamma": "3.19"
+					},
+					{
+						"weight": "2.17"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"gamma": 0.01
+					},
+					{
+						"lightness": 20
+					},
+					{
+						"weight": "1.92"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"saturation": -31
+					},
+					{
+						"lightness": -33
+					},
+					{
+						"weight": "1.75"
+					},
+					{
+						"gamma": 0.8
+					},
+					{
+						"color": "#8D95A9"
+					},
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 30
+					},
+					{
+						"saturation": 30
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry.fill",
+				"stylers": [
+					{
+						"color": "#56D2FF"
+					},
+					{
+						"gamma": "1.34"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"saturation": 20
+					}
+				]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 20
+					},
+					{
+						"saturation": -20
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 10
+					},
+					{
+						"saturation": -30
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"saturation": 25
+					},
+					{
+						"lightness": 25
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "all",
+				"stylers": [
+					{
+						"lightness": -20
+					}
+				]
+			}
+		]
+		// mapTypeId: google.maps.MapTypeId.TERRAIN
+	};
+
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	for (i = 0; i < markers1.length; i++) {
+		addMarker(markers1[i]);
+	}
+}
+
+
+
+function addMarker(marker) {
+	var category = marker[4];
+	var title = marker[1];
+	var pos = new google.maps.LatLng(marker[2], marker[3]);
+	var content = marker[1];
+	var icon = {
+
+		url : markers1[i][5],
+		scaledSize: new google.maps.Size(30, 46)
+	}
+
+
+	// var icon = {
+	// 	// url: "images/aspire-map.svg", // url
+	// 	scaledSize: new google.maps.Size(30, 46)
+	// };
+
+
+	// for (var i = 0; i < markers1.length; i++) {
+  //   var alliance = markers1[i];
+  //   var iconString = '';
+  //   switch (alliance.type) {
+  //       case 'Aspire':
+  //           iconString = 'images/aspire-map.svg';
+  //           break;
+  //       case 'Biotechnology':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
+  //           break;
+  //       case 'BuiltEnvironment':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+  //           break;
+  //       case 'Energy':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+  //           break
+  //       case 'Engineering':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
+  //           break;
+  //       case 'ICT':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png';
+  //           break;
+  //       case 'Manufacturing':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+  //           break;
+  //       case 'Mining':
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+  //           break;
+  //       default:
+  //           iconString = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+  //   }
+
+	marker1 = new google.maps.Marker({
+		title: title,
+		position: pos,
+		category: category,
+		icon:icon,
+		map: map
+
+	});
+
+//}
+
+	gmarkers1.push(marker1);
+
+	// Marker click listener
+	google.maps.event.addListener(marker1, 'click', (function (marker1, content) {
+		return function () {
+			console.log('Gmarker 1 gets pushed');
+			infowindow.setContent(content);
+			infowindow.open(map, marker1);
+			// map.panTo(this.getPosition());
+			// map.setZoom(4);
+		}
+	})(marker1, content));
+}
+
+/**
+* Function to filter markers by category
+*/
+
+filterMarkers = function (category) {
+	for (i = 0; i < gmarkers1.length; i++) {
+		marker = gmarkers1[i];
+		// If is same category or category not picked
+		if((typeof marker.category == 'object' && marker.category.indexOf(category) >= 0) || category.length == 0){
+			marker.setVisible(true);
+		}
+		// Categories don't match
+		else {
+			marker.setVisible(false);
+		}
+	}
+}
+
+// Init map
+initialize();
+
+</script>
+
+
+
+</body>
+</html>
